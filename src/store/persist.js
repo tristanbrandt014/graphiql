@@ -7,7 +7,7 @@ import { config } from "./../config"
 export default () =>
   store.subscribe(() => {
     const fullStore = store.getState()
-    const storeToPersist = pickBy(fullStore, key =>
+    const storeToPersist = pickBy(fullStore, (value, key) =>
       includes(config.persistedStoreKeys, key)
     )
     local.set("store", JSON.stringify(storeToPersist))

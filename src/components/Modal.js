@@ -1,44 +1,47 @@
 import React from "react"
 import Modal from "react-modal"
-import keydown from 'react-keydown';
 import Settings from "./Settings"
+import styled from "styled-components"
 
 const content = {
-    background: "#ddd"
+  background: "#ddd"
 }
 
 const overlay = {
-    zIndex: 50
+  zIndex: 50
 }
 
 const modalStyles = {
-    content,
-    overlay
+  content,
+  overlay
 }
 
-type State = {
-    isOpen: boolean
+type Props = {
+  isOpen: boolean,
+  toggle: Function
 }
 
-class ModalContainer extends React.Component<{}, State> {
-    state = {
-        isOpen: false
-    }
-    @keydown("ctrl+q")
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
-    }
-
-    render() {
-        return (
-        <Modal isOpen={this.state.isOpen} contentLabel="Test" style={modalStyles}>
-            <Settings />
-          </Modal>
-        )
-    }
-
+class ModalContainer extends React.Component<Props> {
+  render() {
+    return (
+      <Modal isOpen={this.props.isOpen} contentLabel="Test" style={modalStyles}>
+        <Container>
+          <Close onClick={this.props.close} />
+          <Settings />
+        </Container>
+      </Modal>
+    )
+  }
 }
+
+const Close = styled.div`
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background-color: red;
+  cursor: pointer;
+`
+
+const Container = styled.div`height: 100%;`
 
 export default ModalContainer
