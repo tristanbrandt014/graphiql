@@ -14,7 +14,7 @@ const Open = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 100%;
-  background: #98fb98;
+  background: #2196F3;
   cursor: pointer;
   position: absolute;
   bottom: 20px;
@@ -23,6 +23,7 @@ const Open = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  z-index:50;
 `
 
 const OpenInner = styled.div`
