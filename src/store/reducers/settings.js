@@ -4,7 +4,8 @@ import type {Action} from './../../flow/actions'
 import {SAVE_SETTINGS, CLEAR_SETTINGS} from './../../flow/actions'
 
 const initialState = {
-  token: ""
+  token: "",
+  refreshToken: ""
 }
 
 export default (state: Settings = initialState, action: Action) => {

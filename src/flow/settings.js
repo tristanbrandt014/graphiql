@@ -1,4 +1,5 @@
 // @flow
 export type Settings = {
-    token: string
+    token: string,
+    refreshToken: string
 }

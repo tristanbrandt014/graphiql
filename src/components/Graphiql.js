@@ -8,7 +8,8 @@ import {connect} from 'react-redux'
 
 type Props = {
   settings: {
-    token: string
+    token: string,
+    refreshToken: string,
   }
 }
 
@@ -18,6 +19,9 @@ class GraphiQLContainer extends React.Component<Props> {
     headers[ "Content-Type"] = "application/json"
     if (this.props.settings.token) {
       headers["Authorization"] = this.props.settings.token
+    }
+    if (this.props.settings.refreshToken) {
+      headers["refreshtoken"] = this.props.settings.refreshToken
     }
     return fetch(config.endpoint, {
       method: "post",

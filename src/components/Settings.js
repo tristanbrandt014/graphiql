@@ -1,3 +1,4 @@
+// @flow
 import React from "react"
 import styled from "styled-components"
 import {saveSettings} from './../store/actions/settings'
@@ -17,10 +18,18 @@ class Settings extends React.Component<Props> {
     })
   }
 
+  handleRefreshTokenChange(e) {
+    const refreshToken = e.target.value
+    this.props.saveSettings({
+      refreshToken
+    })
+  }
+
   render() {
     return (
       <Container>
-        <Input value={this.props.settings.token} type="text" onChange={(e) => this.handleTokenChange(e)} placeholder="JWT" />
+        <Input value={this.props.settings.token} type="text" onChange={(e) => this.handleTokenChange(e)} placeholder="Token" />
+        <Input value={this.props.settings.refreshToken} type="text" onChange={(e) => this.handleRefreshTokenChange(e)} placeholder="Refresh Token" />
       </Container>
     )
   }
@@ -30,6 +39,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
 `
